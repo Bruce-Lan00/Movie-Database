@@ -1,0 +1,69 @@
+html
+    head
+        link(rel="stylesheet" type="text/css" href="../css/General.css")
+
+body
+
+    div#main
+        div(class='header')
+            div(class='center')
+              <form class="form", action="/search", method = "post"> 
+              <input class="input" type="search" id="query" name="q" placeholder="Search Title, Genre, Actor Name..."">
+              <button class = "sbutton" type="button" onclick="window.location.href='http://localhost:3000/searchresults?'">
+              <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+              </button>
+              </form>
+        ul 
+          li  
+           a(href="http://localhost:3000/contribut") Contribute
+          li
+           a(href="http://localhost:3000/search") Search
+          li 
+           a(href="http://localhost:3000/login") Sign In/Up
+          li 
+           a(href="http://localhost:3000/ownprofille") Profile
+          li 
+           a(href="http://localhost:3000") Home 
+        br
+        
+        h2(class="h1") #{user.username +  " " + '(' + user.contribut + ')'}        
+        br
+        br          
+        h3  #{user.username} Following:
+        each person in people
+          a(href='/people/'+ person.name) #{person.name}
+          br
+        br
+        hr
+        h3  Reviews Written by #{user.username}:
+        if reviews.length > 0
+            each review in reviews
+                a #{review.score + "/10" + " " + review.summaryReview}
+                a(href='/review/'+ review.reviewer) View Details
+                br
+        hr          
+        h3  Movies #{user.username} Watched:
+        each movie in movies
+          div(class="displayimg")
+            a(href="/movies/"+movie.Title)
+              img(src=movie.Poster)
+              
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        hr
+        h3  Recommand Movies:
+        each r in recommand
+            div(class="displayimg")
+              a(href="/movies/"+r.Title)
+                img(src=r.Poster)

@@ -1,0 +1,5 @@
+   [
+      {"username": "brucelan", "password": "123", "admin": true , "contribut":"Regular", "Watchlist":["The Ballad of Cable Hogue","An American Tail: Fievel Goes West","House of Games","The Out-of-Towners"], "followedUsers": ["Tianchen Lan"],"followedPeople": ["Sam Peckinpah"]},
+      {"username": "Tianchen Lan", "password": "123", "admin": true , "contribut":"Regular", "Watchlist":["The Ballad of Cable Hogue","An American Tail: Fievel Goes West","House of Games","The Out-of-Towners"], "followedUsers": ["brucelan"],"followedPeople": ["Jason Robards"]}
+   
+   ]

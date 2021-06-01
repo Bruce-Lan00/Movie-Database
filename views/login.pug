@@ -1,0 +1,39 @@
+html
+    head
+        title Sign in 
+        link(rel="stylesheet" type="text/css" href="../css/login.css")
+body
+    
+    section
+            header
+                img( class = "logo" src  = "https://logos.textgiraffe.com/logos/logo-name/Bruce-designstyle-smoothie-m.png" ) 
+                ul 
+                    li 
+                        a(href="http://localhost:3000") Home 
+                    li 
+                        a(href="http://localhost:3000/ownprofille") Profile
+                    li 
+                        a(href="http://localhost:3000/login") Sign In/Up
+                    li
+                        a(href="http://localhost:3000/search") Search
+                    li  
+                        a(href="http://localhost:3000/contribut") Contribute
+        
+    div(class='center')#main
+        h1 Login
+        form(action="/login" method = "post")
+            div(class = "text_field")
+                input(type="text" name="username" required)
+                <span></span> 
+                label(for="text") Username
+            div(class = "text_field")
+                input(type="password"  name="password" required)
+                <span></span> 
+                label(for="password") Password
+            input(type ="submit" value="Login")
+            div(class="signup_link")
+                labal Not a member 
+                a(href="/signup") Signup
+                        
+
+                

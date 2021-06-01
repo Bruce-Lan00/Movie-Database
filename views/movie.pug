@@ -1,0 +1,121 @@
+html
+    head
+        link(rel="stylesheet" type="text/css" href="../css/General.css")
+        title Movie
+body
+    script(src="/app/js/addReview.js")
+
+    div#main
+        div(class='header')
+            div(class='center')
+              <form class="form", action="/search", method = "post">  
+              <input class="input" type="search" id="query" name="q" placeholder="Search Title, Genre, Actor Name..."">
+              <button class = "sbutton" type="button" onclick="window.location.href='http://localhost:3000/searchresults?'">
+              <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+              </button>
+              </form>
+        ul 
+          li  
+           a(href="http://localhost:3000/contribut") Contribute
+          li
+           a(href="http://localhost:3000/search") Search
+          li 
+           a(href="http://localhost:3000/login") Sign In/Up
+          li 
+           a(href="http://localhost:3000/ownprofille") Profile
+          li 
+           a(href="http://localhost:3000") Home 
+        br
+
+        br
+        form(action="/movies/:Title" method = "post")
+          h2(class="h1") #{movie.Title} 
+          input(type = "hidden" name = "deleteMovie"  value =movie.Title)
+          input(type= "submit"  value = movieAddState )
+        br
+        img(src=movie.Poster)
+        p Director:  
+          each director in movie.Director
+            a(href="/people/" + director) #{director} #{''}
+        br
+        p Writer:  
+          each writer in movie.Writer
+            a(href="/people/" + writer) #{writer} #{''}
+        br
+        p Actors:  
+          each actors in movie.Actors
+            a(href="/people/" + actors) #{actors} #{''}
+        br
+        p  Runtime:  #{movie.Runtime}
+        br
+        p  Average Rating:  #{movie.Rated}
+        br
+        p  Genre: 
+          each genre in movie.Genre
+            a(href="/genre/" + genre) #{genre} #{''}   
+        br
+        p(class="italic") Plot:  #{movie.Plot}
+        br
+        br
+        br
+        br
+        hr
+        h3 Similar movies:
+        each m in smovies
+            div(class="displayimg")
+              a(href="/movies/"+ m.Title)
+                img(src=m.Poster)
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        hr
+        h3 Reviews: 
+        br
+        if reviews.length > 0
+            each review in reviews
+                a #{review.score + "/10" + " " + review.summaryReview}
+                a(href='/review/'+ review.reviewer) View Details
+                br
+        br
+        a Add a Review &#10000:
+        br
+        br
+        a Review Score: 
+        select(id = 'score')
+            option(value="1") 1
+            option(value="2") 2
+            option(value="3") 3
+            option(value="4") 4
+            option(value="5") 5
+            option(value="6") 6
+            option(value="8") 8
+            option(value="9") 9
+            option(value="10") 10
+        br
+        h3 Review Summary:
+        form
+          div(class = "text_field")
+            input(type = "textbox" id="summary" required)
+            br
+            br
+            button(type= "submit" value = movie.Title id = "title" onclick="submit1()") Submit Basic Review
+        form
+          br
+          h3 Full Review Text:
+          textarea(type = "textbox" id="reviewText" required)
+          br
+          button(type= "submit" id= "username" value = reviewer onclick="submit2()") Submit Full Review
+
+
+        
+           
